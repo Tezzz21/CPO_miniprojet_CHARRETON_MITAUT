@@ -17,6 +17,6 @@ public class Projet_MiniJeu {
         // TODO code application logic here
     }
     public void maMethode() {
-        
+        objet a
     }
 }
