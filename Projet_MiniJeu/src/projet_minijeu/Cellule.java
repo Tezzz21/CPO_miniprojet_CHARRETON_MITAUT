@@ -26,6 +26,13 @@ public class Cellule {
     public void revelerCellule() {
         this.devoilee = true; // Révèle la cellule
     }
+
+    public boolean isDevoilee() {
+        return devoilee;
+    }
+    
+    
+    
     public void setNbBombesAdjacentes(int nbBombesAdjacentes ){
         if (nbBombesAdjacentes>=0){
             this.nbBombesAdjacentes=nbBombesAdjacentes;

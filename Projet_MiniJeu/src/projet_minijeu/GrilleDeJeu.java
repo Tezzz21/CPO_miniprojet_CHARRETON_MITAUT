@@ -56,27 +56,100 @@ public class GrilleDeJeu {
             }
         }
     }
-     private int compterBombesAdjacentes(int ligne, int colonne) {
-        int count = 0;
+      public void calculerBombesAdjacentes() {
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                if (!matriceCellules[i][j].getPresenceBombe()) {
+                    int nbBombesAdjacentes = compterBombesAdjacentes(i, j);
+                    matriceCellules[i][j].setNbBombesAdjacentes(nbBombesAdjacentes);
+                }
+            }
+        }
+    }
 
-        // Parcourir les 8 directions autour de la cellule (ligne, colonne)
+    private int compterBombesAdjacentes(int x, int y) {
+        int bombes = 0;
+
+        // Parcourir les 8 directions autour de la cellule
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                if (i == 0 && j == 0) {
-                    continue; // Ignorer la cellule centrale
-                }
+                if (i == 0 && j == 0) continue; // Ignorer la cellule centrale
+                int voisinX = x + i;
+                int voisinY = y + j;
 
-                int adjLigne = ligne + i;
-                int adjColonne = colonne + j;
-
-                // Vérifier si les coordonnées adjacentes sont dans les limites de la grille
-                if (adjLigne >= 0 && adjLigne < nbLignes && adjColonne >= 0 && adjColonne < nbColonnes) {
-                    if (matriceCellules[adjLigne][adjColonne].getPresenceBombe()) {
-                        count++;
+                // Vérifier si le voisin est dans les limites de la grille
+                if (voisinX >= 0 && voisinX < nbLignes && voisinY >= 0 && voisinY < nbColonnes) {
+                    if (matriceCellules[voisinX][voisinY].getPresenceBombe()) {
+                        bombes++;
                     }
                 }
             }
         }
-        return count;
+
+        return bombes;
+    }
+    public void revelerCellule(int ligne, int colonne) {
+        // Vérifier si la cellule est déjà dévoilée
+        if (matriceCellules[ligne][colonne].isDevoilee()==true) {
+            return;
+        }
+
+        // Révéler la cellule
+        matriceCellules[ligne][colonne].revelerCellule();
+
+        
+
+        // Si la cellule ne contient pas de bombes adjacentes, propager la révélation
+        if (matriceCellules[ligne][colonne].getNbBombesAdjacentes() == 0) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    int voisinX = ligne + i;
+                    int voisinY = colonne + j;
+
+                    // Vérifier les limites et éviter de révéler la cellule elle-même
+                    if ((i != 0 || j != 0) && voisinX >= 0 && voisinX < nbLignes && voisinY >= 0 && voisinY < nbColonnes) {
+                        revelerCellule(voisinX, voisinY);
+                    }
+                }
+            }
+        }
+    }
+    public boolean getPresenceBombe(int i, int j) {
+        return matriceCellules[i][j].getPresenceBombe();
+    }
+     public boolean toutesCellulesRevelees() {
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                Cellule cellule = matriceCellules[i][j];
+                if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+      @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        // Ajouter les indices de colonnes
+        sb.append("   "); // Alignement
+        for (int j = 0; j < nbColonnes; j++) {
+            sb.append(j).append(" ");
+        }
+        sb.append("\n");
+
+        // Ajouter la grille ligne par ligne
+        for (int i = 0; i < nbLignes; i++) {
+            sb.append(i).append(" |"); // Ajouter l'indice de la ligne
+            for (int j = 0; j < nbColonnes; j++) {
+                sb.append(matriceCellules[i][j]).append(" ");
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 }
+
+

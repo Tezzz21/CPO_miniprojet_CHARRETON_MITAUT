@@ -14,8 +14,8 @@ public class Projet_MiniJeu {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
+       GrilleDeJeu grille = new GrilleDeJeu(5, 5,5);
+       grille.revelerCellule(0, 0);  
     }
    
         
