@@ -1,6 +1,7 @@
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import projet_minijeu.fenetre_perdu;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -25,7 +26,7 @@ public class fenetre_principale extends javax.swing.JFrame {
         for (int i=0; i < nbLignes; i++) {
         for (int j=0; j < nbColonnes; j++ ) {
         JButton bouton_cellule = new JButton(); // création d'un bouton
-        PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+        PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille 
  }
 }
 
