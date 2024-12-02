@@ -98,7 +98,7 @@ public class fenetre_principale extends javax.swing.JFrame {
                 new fenetre_principale().setVisible(true);
             }
         });
-    }
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
