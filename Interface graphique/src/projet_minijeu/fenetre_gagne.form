@@ -43,7 +43,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&apos;as gagn&#xe9; .... poil au pieds !"/>
+        <Property name="text" type="java.lang.String" value="tu as gagn&#xe9;"/>
       </Properties>
     </Component>
   </SubComponents>

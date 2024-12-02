@@ -30,7 +30,7 @@ public class fenetre_gagne extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("T'as gagné .... poil au pieds !");
+        jLabel1.setText("tu as gagné");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
