@@ -14,8 +14,9 @@ public class Projet_MiniJeu {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       GrilleDeJeu grille = new GrilleDeJeu(3, 5, 5);
-
+       GrilleDeJeu grille = new GrilleDeJeu(10, 10, 10);
+       grille.placerBombesAleatoirement();
+       grille.calculerBombesAdjacentes();
         // Afficher la grille initiale
         System.out.println("Grille initiale :");
         System.out.println(grille);
