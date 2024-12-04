@@ -93,7 +93,8 @@ public class GrilleDeJeu {
         if (matriceCellules[ligne][colonne].isDevoilee()==true) {
             return;
         }
-
+        
+            
         // Révéler la cellule
         matriceCellules[ligne][colonne].revelerCellule();
 
@@ -144,6 +145,7 @@ public class GrilleDeJeu {
             sb.append(i).append(" |"); // Ajouter l'indice de la ligne
             for (int j = 0; j < nbColonnes; j++) {
                 sb.append(matriceCellules[i][j]).append(" ");
+                
             }
             sb.append("\n");
         }
