@@ -1,7 +1,6 @@
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
-import projet_minijeu.fenetre_perdu;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
