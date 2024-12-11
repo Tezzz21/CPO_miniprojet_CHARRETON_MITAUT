@@ -16,12 +16,12 @@ public class fenetre_principale extends javax.swing.JFrame {
 
     /**
      * Creates new form fenetre_principale
+     * @param nbColonnes
+     * @param nbLignes
      */
-    public fenetre_principale() {
+    public fenetre_principale(int nbColonnes, int nbLignes) {
         initComponents();
-        
-        int nbLignes = 10;
-        int nbColonnes = 10;
+  
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
         for (int j=0; j < nbColonnes; j++ ) {
@@ -96,7 +96,7 @@ public class fenetre_principale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fenetre_principale().setVisible(true);
+               
             }
         });
      }

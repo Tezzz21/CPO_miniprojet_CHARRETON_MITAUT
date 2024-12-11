@@ -135,12 +135,18 @@ public class fenetre_settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String texte1 = jTextField1.getText();
-        String texte2 = jTextField1.getText();
-        String texte3 = jTextField1.getText();
-        if (texte1.isEmpty() || texte2.isEmpty() || texte3.isEmpty()) {
+        String nbC = jTextField1.getText();
+        String nbL = jTextField2.getText();
+        String texte3 = jTextField3.getText();
+        if (nbC.isEmpty() || nbL.isEmpty() || texte3.isEmpty()) {
     JOptionPane.showMessageDialog(this, "Un des champs de texte est vide");
 }
+        else {
+           int C = Integer.parseInt(nbC);
+           int L = Integer.parseInt(nbL);
+            fenetre_principale fp = new fenetre_principale(C , L);
+            fp.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
    
     /**
