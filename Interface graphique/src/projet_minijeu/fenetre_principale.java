@@ -1,3 +1,5 @@
+package projet_minijeu;
+
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
