@@ -1,5 +1,7 @@
 package projet_minijeu;
+
 import java.util.Random;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -10,22 +12,25 @@ import java.util.Random;
  * @author tessc
  */
 public class GrilleDeJeu {
+
     private Cellule[][] matriceCellules;
-    private int nbLignes;    
-    private int nbColonnes; 
-    private int nbBombes; 
-    
+    private int nbLignes;
+    private int nbColonnes;
+    private int nbBombes;
+
     public int getNbLignes() {
         return nbLignes;
     }
+
     public int getNbColonnes() {
         return nbColonnes;
     }
+
     public int getNbBombes() {
         return nbBombes;
     }
-    
-        // Constructeur : on initialise une grille
+
+    // Constructeur : on initialise une grille
     public GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
@@ -39,6 +44,7 @@ public class GrilleDeJeu {
             }
         }
     }
+
     // Méthode pour placer les bombes aléatoirement
     public void placerBombesAleatoirement() {
         Random random = new Random();
@@ -50,13 +56,14 @@ public class GrilleDeJeu {
             int j = random.nextInt(nbColonnes);
 
             // Vérifier si la cellule ne contient pas déjà une bombe
-            if (matriceCellules[i][j].getPresenceBombe()== false) {
+            if (matriceCellules[i][j].getPresenceBombe() == false) {
                 matriceCellules[i][j].placerBombe(); // Placer une bombe
                 bombesPlacees++; // Incrementer le compteur de bombes placées
             }
         }
     }
-      public void calculerBombesAdjacentes() {
+
+    public void calculerBombesAdjacentes() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 if (!matriceCellules[i][j].getPresenceBombe()) {
@@ -73,7 +80,9 @@ public class GrilleDeJeu {
         // Parcourir les 8 directions autour de la cellule
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                if (i == 0 && j == 0) continue; // Ignorer la cellule centrale
+                if (i == 0 && j == 0) {
+                    continue; // Ignorer la cellule centrale
+                }
                 int voisinX = x + i;
                 int voisinY = y + j;
 
@@ -88,16 +97,18 @@ public class GrilleDeJeu {
 
         return bombes;
     }
+
     public void revelerCellule(int ligne, int colonne) {
         // Vérifier si la cellule est déjà dévoilée
-        if (matriceCellules[ligne][colonne].isDevoilee()==true) {
+        if (matriceCellules[ligne][colonne].isDevoilee() == true) {
             return;
         }
 
         // Révéler la cellule
         matriceCellules[ligne][colonne].revelerCellule();
-
-        
+        if (matriceCellules[ligne][colonne].getPresenceBombe() == true) {
+            return;
+        }
 
         // Si la cellule ne contient pas de bombes adjacentes, propager la révélation
         if (matriceCellules[ligne][colonne].getNbBombesAdjacentes() == 0) {
@@ -114,10 +125,12 @@ public class GrilleDeJeu {
             }
         }
     }
+
     public boolean getPresenceBombe(int i, int j) {
         return matriceCellules[i][j].getPresenceBombe();
     }
-     public boolean toutesCellulesRevelees() {
+
+    public boolean toutesCellulesRevelees() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 Cellule cellule = matriceCellules[i][j];
@@ -128,7 +141,8 @@ public class GrilleDeJeu {
         }
         return true;
     }
-      @Override
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -144,6 +158,7 @@ public class GrilleDeJeu {
             sb.append(i).append(" |"); // Ajouter l'indice de la ligne
             for (int j = 0; j < nbColonnes; j++) {
                 sb.append(matriceCellules[i][j]).append(" ");
+
             }
             sb.append("\n");
         }
@@ -151,5 +166,3 @@ public class GrilleDeJeu {
         return sb.toString();
     }
 }
-
-
