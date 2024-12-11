@@ -66,9 +66,8 @@ public class fenetre_menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       fenetre_principale fenetreDeJeu = new fenetre_principale();
+       fenetre_perdu fenetreDeJeu = new fenetre_perdu();
        fenetreDeJeu.setVisible(true);
-       this.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

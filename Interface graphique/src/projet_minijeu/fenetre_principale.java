@@ -6,7 +6,6 @@ import javax.swing.JButton;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author tessc
@@ -26,6 +25,7 @@ public class fenetre_principale extends javax.swing.JFrame {
         for (int j=0; j < nbColonnes; j++ ) {
         JButton bouton_cellule = new JButton(); // création d'un bouton
         PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille 
+        
  }
 }
 
