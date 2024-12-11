@@ -138,14 +138,8 @@ public class fenetre_settings extends javax.swing.JFrame {
         String texte1 = jTextField1.getText();
         String texte2 = jTextField1.getText();
         String texte3 = jTextField1.getText();
-        if (texte1.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Le champ de texte est vide !");
-}
-        if (texte2.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Le champ de texte est vide !");
-}
-        if (texte3.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Le champ de texte est vide !");
+        if (texte1.isEmpty() || texte2.isEmpty() || texte3.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Un des champs de texte est vide");
 }
     }//GEN-LAST:event_jButton1ActionPerformed
    
