@@ -107,7 +107,7 @@ public class GrilleDeJeu {
         // Révéler la cellule
         matriceCellules[ligne][colonne].revelerCellule();
         if (matriceCellules[ligne][colonne].getPresenceBombe() == true) {
-            return;
+            return ;
         }
 
         // Si la cellule ne contient pas de bombes adjacentes, propager la révélation
