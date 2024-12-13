@@ -14,20 +14,20 @@ public class Projet_MiniJeu {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GrilleDeJeu grille = new GrilleDeJeu(10, 10, 10);
-       grille.placerBombesAleatoirement();
-       grille.calculerBombesAdjacentes();
-        // Afficher la grille initiale
-        System.out.println("Grille initiale :");
-        System.out.println(grille);
+       int lignes = 5; // Nombre de lignes de la grille
+        int colonnes = 5; // Nombre de colonnes de la grille
+        int nombreBombes = 5; // Nombre de bombes dans la grille
+        int viesInitiales = 3; // Nombre de vies au départ
 
-        // Révéler une cellule
-        grille.revelerCellule(1, 0);
-        // Afficher la grille après révélation
-        System.out.println("Grille apres avoir revelee (0, 0) :");
-        System.out.println(grille);
+        // Créer une nouvelle partie
+        Partie partie = new Partie(lignes, colonnes, nombreBombes, viesInitiales);
+
+        // Démarrer la partie (inclut la boucle de jeu)
+        partie.demarrerPartie();
+        
+    }
     }
    
         
     
-}
+

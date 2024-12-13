@@ -10,27 +10,62 @@ package projet_minijeu;
  */
 public class Partie {
     private GrilleDeJeu grille;
-    private int nbVies;
-    private boolean enCours;
+    private int vies;
+    private boolean partieTerminee;
     
     // Constructeur
-    public Partie(int nbLignes, int nbColonnes, int nbBombes, int nbVies) {
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes,nbBombes);
-        this.nbVies = nbVies;
-        this.enCours = true;
+    public Partie(int lignes, int colonnes, int nombreBombes, int viesInitiales) {
+        this.grille = new GrilleDeJeu(lignes, colonnes, nombreBombes);
+        this.vies = viesInitiales;
+        this.partieTerminee = false;
     }
-    private void initialiserPartie() {
-        grille.placerBombesAleatoirement();
-        this.nbVies = nbVies;           
-        this.enCours = true;
-        }
+    public void initialiserPartie() {
+        grille.placerBombesAleatoirement(); // Place les bombes aléatoirement sur la grille
+        grille.calculerBombesAdjacentes(); // Calcule le nombre de bombes adjacentes pour chaque cellule
+        this.vies = 3; // Réinitialisation des vies (ou autre valeur par défaut)
+        this.partieTerminee = false;
+        System.out.println("Nouvelle partie démarrée !");
+    }
     
-    public void tourDeJeu(int ligne, int colonne){
-        if (!enCours) {
-            System.out.println("La partie est terminée.");
+    public void tourDeJeu(int ligne, int colonne) {
+        
+        if (partieTerminee) {
+            System.out.println("La partie est terminée. Veuillez démarrer une nouvelle partie.");
             return;
         }
-        grille.revelerCellule(ligne, colonne);
-        
+
+        boolean bombeTrouvee = grille.getPresenceBombe(ligne, colonne);
+        if (bombeTrouvee) {
+            vies--;
+            System.out.println("Boom ! Une bombe a explosé. Vies restantes : " + vies);
+            if (vies <= 0) {
+                partieTerminee = true;
+                System.out.println("Game Over !");
+            }
+        } else {
+            grille.calculerBombesAdjacentes();
+            grille.revelerCellule(ligne, colonne);
+            System.out.println(grille);
+        }
+
+        if (verifierVictoire()) {
+            partieTerminee = true;
+            System.out.println("Félicitations ! Vous avez gagné !");
+        }
+    }
+    public boolean verifierVictoire() {
+        return grille.toutesCellulesRevelees();
+    }
+    public void demarrerPartie() {
+        initialiserPartie();
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        while (!partieTerminee) {
+            System.out.println("Entrez les coordonnées de la cellule à révéler (ligne colonne) : ");
+            int ligne = scanner.nextInt();
+            int colonne = scanner.nextInt();
+            tourDeJeu(ligne, colonne);
+        }
+        scanner.close();
     }
 }
