@@ -14,7 +14,7 @@ public class Projet_MiniJeu {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       GrilleDeJeu grille = new GrilleDeJeu(10, 10, 10);
+        GrilleDeJeu grille = new GrilleDeJeu(10, 10, 10);
        grille.placerBombesAleatoirement();
        grille.calculerBombesAdjacentes();
         // Afficher la grille initiale
@@ -23,7 +23,6 @@ public class Projet_MiniJeu {
 
         // Révéler une cellule
         grille.revelerCellule(1, 0);
-
         // Afficher la grille après révélation
         System.out.println("Grille apres avoir revelee (0, 0) :");
         System.out.println(grille);
