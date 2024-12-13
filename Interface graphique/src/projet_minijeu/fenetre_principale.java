@@ -18,20 +18,33 @@ public class fenetre_principale extends javax.swing.JFrame {
      * Creates new form fenetre_principale
      * @param nbColonnes
      * @param nbLignes
-     */
-    public fenetre_principale(int nbColonnes, int nbLignes) {
+     * @param nbBombes
+     * @param nbVies
+     */ GrilleDeJeu grille;
+        int nbCoups; 
+        
+    public fenetre_principale(int nbColonnes, int nbLignes , int nbBombes , int nbVies) {
         initComponents();
-  
+        
+   
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes , nbBombes);
+        
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
         for (int j=0; j < nbColonnes; j++ ) {
-        JButton bouton_cellule = new JButton(); // création d'un bouton
+       Cellule bouton_cellule = new Cellule( grille.matriceCellules[i][j], 36,36);
         PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille 
         
  }
 }
-
+        Partie mapartie = new Partie(nbColonnes,nbLignes , nbBombes ,nbVies);
     }
+    
+    public void initialiserPartie() {
+        grille.eteindreToutesLesCellules();
+        grille.melangerMatriceAleatoirement(10);
+ }
+
       
     /**
      * This method is called from within the constructor to initialize the form.

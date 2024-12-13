@@ -157,11 +157,12 @@ public class fenetre_settings extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(this, "Un des champs de texte est vide");
 }
         else {
+           int B = Integer.parseInt(nbB);
            int V = Integer.parseInt(nbV);
            int C = Integer.parseInt(nbC);
            int L = Integer.parseInt(nbL);
-            fenetre_principale fp = new fenetre_principale(C , L);
-            fp.setVisible(true);       
+            fenetre_principale fp = new fenetre_principale(C , L , B , V);
+            fp.setVisible(true);             
     }
         
   
