@@ -29,6 +29,11 @@ public class GrilleDeJeu {
     public int getNbBombes() {
         return nbBombes;
     }
+    
+    public Cellule[][] getMatriceCellules(){
+        return matriceCellules;
+    }
+    
 
     // Constructeur : on initialise une grille
     public GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
@@ -164,5 +169,10 @@ public class GrilleDeJeu {
         }
 
         return sb.toString();
+    }
+    
+    
+    public Cellule getCelluleFromMatriceCellules(int i, int j){
+        return this.matriceCellules[i][j];
     }
 }
