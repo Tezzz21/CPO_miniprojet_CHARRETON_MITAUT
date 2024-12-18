@@ -3,6 +3,7 @@ package projet_minijeu;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import java.awt.Dimension;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,27 +24,16 @@ public class fenetre_principale extends javax.swing.JFrame {
      */ GrilleDeJeu grille;
         int nbCoups; 
         
-    public fenetre_principale(int nbColonnes, int nbLignes , int nbBombes , int nbVies) {
-        initComponents();
-        
-   
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes , nbBombes);
-        
-        PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        for (int i=0; i < nbLignes; i++) {
-        for (int j=0; j < nbColonnes; j++ ) {
-       Cellule bouton_cellule = new Cellule( grille.matriceCellules[i][j], 36,36);
-        PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille 
-        
- }
-}
-        Partie mapartie = new Partie(nbColonnes,nbLignes , nbBombes ,nbVies);
-    }
+    public fenetre_principale(int nbColonnes, int nbLignes, int nbBombes, int nbVies) {
+    initComponents();
+
+    // Création de la partie
+    Partie mapartie = new Partie(nbColonnes, nbLignes, nbBombes, nbVies, this.grille, PanneauGrille, this);
+    mapartie.initialiserPartie();
     
-    public void initialiserPartie() {
-        grille.eteindreToutesLesCellules();
-        grille.melangerMatriceAleatoirement(10);
- }
+}
+
+  
 
       
     /**
@@ -67,14 +57,14 @@ public class fenetre_principale extends javax.swing.JFrame {
         PanneauGrille.setLayout(PanneauGrilleLayout);
         PanneauGrilleLayout.setHorizontalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         PanneauGrilleLayout.setVerticalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 210, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 400, 400));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
