@@ -1,6 +1,8 @@
 package projet_minijeu;
 
 import java.util.Random;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,6 +19,7 @@ public class GrilleDeJeu {
     private int nbLignes;
     private int nbColonnes;
     private int nbBombes;
+    public JPanel Panneaugrille;
 
     public int getNbLignes() {
         return nbLignes;
@@ -36,11 +39,12 @@ public class GrilleDeJeu {
     
 
     // Constructeur : on initialise une grille
-    public GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
+    public GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes, JPanel Panneaugrille) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.nbBombes = nbBombes;
         this.matriceCellules = new Cellule[nbLignes][nbColonnes];
+        this.Panneaugrille = Panneaugrille;
 
         // Initialiser toutes les cellules
         for (int i = 0; i < nbLignes; i++) {
@@ -48,6 +52,8 @@ public class GrilleDeJeu {
                 matriceCellules[i][j] = new Cellule();
             }
         }
+        //placerBombesAleatoirement();
+        //calculerBombesAdjacentes();
     }
 
     // Méthode pour placer les bombes aléatoirement
@@ -125,6 +131,14 @@ public class GrilleDeJeu {
                     // Vérifier les limites et éviter de révéler la cellule elle-même
                     if ((i != 0 || j != 0) && voisinX >= 0 && voisinX < nbLignes && voisinY >= 0 && voisinY < nbColonnes) {
                         revelerCellule(voisinX, voisinY);
+                       
+                        // Récupérer le composant au bon index et le caster en JButton
+                        JButton bouton = (JButton) this.Panneaugrille.getComponent(voisinX * this.nbColonnes + voisinY);
+
+                        // Mettre à jour le texte du bouton
+                        bouton.setText(matriceCellules[voisinX][voisinY].toString());
+                        
+
                     }
                 }
             }

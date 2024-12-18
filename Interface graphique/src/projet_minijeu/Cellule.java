@@ -12,8 +12,24 @@ package projet_minijeu;
 public class Cellule {
     private boolean presenceBombe;
     private boolean devoilee;
+    private int posi;
+    private int posj;
+    
     int nbBombesAdjacentes;
     
+    public int getPosi(){
+        return posi;
+    }
+    public int getPosj(){
+        return posj;
+    }
+    
+    public void setPosi(int i){
+        this.posi = i;
+    }
+    public void setPosj(int j){
+        this.posj = j;
+    }
     public boolean getPresenceBombe(){
         return presenceBombe;
     }

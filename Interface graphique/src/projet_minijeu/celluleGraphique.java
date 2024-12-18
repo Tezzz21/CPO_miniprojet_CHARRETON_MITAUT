@@ -25,8 +25,8 @@ public class celluleGraphique {
     }
    
     protected void placerBombesAleatoirement(Graphics g) {
- super.placerBombesAleatoirement(g);
- this.setText(CelluleAssociee.toString());
+        //super.placerBombesAleatoirement(g);
+        //this.setText(CelluleAssociee.toString());
  }
 
 }
