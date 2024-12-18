@@ -80,7 +80,6 @@ public class Partie {
     public void initialiserPartie() {
         this.grille.placerBombesAleatoirement(); // Place les bombes aléatoirement sur la grille
         this.grille.calculerBombesAdjacentes(); // Calcule le nombre de bombes adjacentes pour chaque cellule
-        this.vies = 3; // Réinitialisation des vies (ou autre valeur par défaut)
         this.partieTerminee = false;
     }
     
