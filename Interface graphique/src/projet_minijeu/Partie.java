@@ -20,15 +20,17 @@ public class Partie {
     private JPanel PanneauGrille;
     public int lignes;
     public int colonnes;
+    public fenetre_principale Fenetre_Jeu;
 
     
     // Constructeur
-    public Partie(int lignes, int colonnes, int nombreBombes, int viesInitiales, GrilleDeJeu grille, JPanel PanneauGrille ) {
+    public Partie(int lignes, int colonnes, int nombreBombes, int viesInitiales, GrilleDeJeu grille, JPanel PanneauGrille, fenetre_principale JEU ) {
         this.vies = viesInitiales;
         this.partieTerminee = false;
         this.PanneauGrille = PanneauGrille;
         this.lignes = lignes;
         this.colonnes = colonnes;
+        this.Fenetre_Jeu =JEU;
         
         // Initialisation de la grille de jeu
         this.grille = new GrilleDeJeu(lignes, colonnes, nombreBombes, PanneauGrille);
@@ -87,6 +89,8 @@ public class Partie {
         if (partieTerminee) {
             //System.out.println("La partie est terminée. Veuillez démarrer une nouvelle partie.");
             fenetre_perdu Perdu = new fenetre_perdu();
+            Perdu.setVisible(true);
+            this.Fenetre_Jeu.dispose();
 
             return;
         }
@@ -98,6 +102,12 @@ public class Partie {
             if (vies <= 0) {
                 partieTerminee = true;
                 System.out.println("Game Over !");
+                fenetre_perdu Perdu = new fenetre_perdu();
+                Perdu.setVisible(true);
+                this.Fenetre_Jeu.dispose();
+
+
+
             }
         } else {
             grille.calculerBombesAdjacentes();
@@ -108,6 +118,9 @@ public class Partie {
         if (verifierVictoire()) {
             partieTerminee = true;
             System.out.println("Félicitations ! Vous avez gagné !");
+            fenetre_gagne gagne = new fenetre_gagne();
+            gagne.setVisible(true);
+            this.Fenetre_Jeu.dispose();
         }
     }
     public boolean verifierVictoire() {
