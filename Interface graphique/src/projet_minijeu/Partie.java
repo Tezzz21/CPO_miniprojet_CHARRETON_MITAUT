@@ -18,15 +18,20 @@ public class Partie {
     private int vies;
     private boolean partieTerminee;
     private JPanel PanneauGrille;
+    public int lignes;
+    public int colonnes;
+
     
     // Constructeur
     public Partie(int lignes, int colonnes, int nombreBombes, int viesInitiales, GrilleDeJeu grille, JPanel PanneauGrille ) {
         this.vies = viesInitiales;
         this.partieTerminee = false;
         this.PanneauGrille = PanneauGrille;
+        this.lignes = lignes;
+        this.colonnes = colonnes;
         
         // Initialisation de la grille de jeu
-        this.grille = new GrilleDeJeu(lignes, colonnes, nombreBombes);
+        this.grille = new GrilleDeJeu(lignes, colonnes, nombreBombes, PanneauGrille);
 
         // Définir le layout du panneau comme une grille
         PanneauGrille.setLayout(new GridLayout(lignes, colonnes));
@@ -52,9 +57,9 @@ public class Partie {
                 // Ajouter un ActionListener pour gérer les clics
                 bouton.addActionListener(e -> {
                     // Révéler la cellule associée à ce bouton
-                    bouton_cellule.CelluleAssociee.revelerCellule();
+                    //bouton_cellule.CelluleAssociee.revelerCellule();
 
-
+                    this.grille.revelerCellule(bouton_cellule.CelluleAssociee.getPosi(), bouton_cellule.CelluleAssociee.getPosj());
 
                     // Mettre à jour le texte du bouton selon l'état de la cellule
                     bouton.setText(bouton_cellule.CelluleAssociee.toString());
@@ -96,7 +101,7 @@ public class Partie {
             }
         } else {
             grille.calculerBombesAdjacentes();
-            grille.revelerCellule(ligne, colonne);
+            //grille.revelerCellule(ligne, colonne);
             System.out.println(grille);
         }
 
