@@ -41,7 +41,7 @@ public class fenetre_settings extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("paramètre de partie:");
+        jLabel1.setText("Paramètres de la partie :");
 
         jLabel2.setText("nombre de colonnes :");
 
@@ -83,9 +83,6 @@ public class fenetre_settings extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
@@ -104,15 +101,18 @@ public class fenetre_settings extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(60, 60, 60)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,17 +153,28 @@ public class fenetre_settings extends javax.swing.JFrame {
         String nbL = jTextField2.getText();
         String nbB = jTextField3.getText();
         String nbV = jTextField4.getText();
+        
         if (nbC.isEmpty() || nbL.isEmpty() || nbB.isEmpty() || nbV.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Un des champs de texte est vide");
-}
-        else {
-           int B = Integer.parseInt(nbB);
-           int V = Integer.parseInt(nbV);
-           int C = Integer.parseInt(nbC);
-           int L = Integer.parseInt(nbL);
-            fenetre_principale fp = new fenetre_principale(C , L , B , V);
-            fp.setVisible(true);             
-    }
+            JOptionPane.showMessageDialog(this, "Un des champs de texte est vide");
+        }else{
+            try {
+                int intnbC = Integer.parseInt(nbC); 
+                int intnbL = Integer.parseInt(nbL); 
+                int intnbB = Integer.parseInt(nbB);
+                int intnbV = Integer.parseInt(nbV);
+                
+                
+                fenetre_principale fp = new fenetre_principale(intnbC , intnbL , intnbB , intnbV);
+                fp.setVisible(true);  
+                this.dispose();
+                
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Vous devez remplir les champs avec des nombres");
+            }
+        }
+        
+       
+
         
   
     }//GEN-LAST:event_jButton1ActionPerformed
